@@ -1,7 +1,7 @@
 # STUX
 
 #### Description
-基于web的校园社交系统
+基于Web的校园社交系统
 
 #### Software Architecture
 Software architecture description
