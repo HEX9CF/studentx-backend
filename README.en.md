@@ -1,4 +1,4 @@
-# STUX
+# Studenx
 
 #### Description
 基于Web的校园社交系统
