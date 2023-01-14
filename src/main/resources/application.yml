@@ -1,10 +1,9 @@
 server:
   # 端口
   port: 80
-
 spring:
-  # 数据库连接配置
   datasource:
+    # 数据库连接配置
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       # 数据库地址
@@ -13,6 +12,8 @@ spring:
       username: "root"
       # 数据库密码
       password: "toor"
+  banner:
+    location: banner
 
 mybatis-plus:
   global-config:
@@ -21,6 +22,7 @@ mybatis-plus:
       table-prefix: tbl_
       # id自增策略
       id-type: auto
+    banner: false
   configuration:
     # MP调试日志标准输出
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
