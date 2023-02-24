@@ -1,4 +1,4 @@
-package com.example.domain;
+package cn.stux.domain;
 
 import lombok.Data;
 
