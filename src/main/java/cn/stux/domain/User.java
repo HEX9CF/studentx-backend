@@ -1,7 +1,14 @@
+
 package cn.stux.domain;
 
 import lombok.Data;
 
+/**
+ * 用户实体类
+ *
+ * @author HEX9CF
+ * @date 2023/02/24
+ */
 @Data
 public class User {
     private Integer id;

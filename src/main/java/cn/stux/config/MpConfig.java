@@ -5,11 +5,16 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Mp拦截器配置
+ *
+ * @author HEX9CF
+ * @date 2023/02/24
+ */
 @Configuration
 public class MpConfig {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor(){
-        // 设置Mp拦截器
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         // 添加具体拦截器
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor());

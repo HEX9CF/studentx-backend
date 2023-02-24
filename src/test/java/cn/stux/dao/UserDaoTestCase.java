@@ -10,13 +10,22 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+/**
+ * 用户DAO测试用例
+ *
+ * @author HEX9CF
+ * @date 2023/02/24
+ */
 @SpringBootTest
 public class UserDaoTestCase {
     @Autowired
     private UserDao userDao;
+
+    /**
+     * 测试保存
+     */
     @Test
     void testSave() {
-        // 保存数据
         User user = new User();
         user.setName("测试用户");
         user.setSex("男");
@@ -25,19 +34,28 @@ public class UserDaoTestCase {
         user.setPhone("12312345678");
         userDao.insert(user);
     }
+
+    /**
+     * 测试通过id查询
+     */
     @Test
     void testGetById() {
-        // 按id查询
         System.out.println(userDao.selectById(1));
     }
+
+    /**
+     * 测试获取全部
+     */
     @Test
     void testGetAll() {
-        // 读取全部
         System.out.println(userDao.selectList(null));
     }
+
+    /**
+     * 测试更新
+     */
     @Test
     void testUpdate() {
-        // 更新数据
         User user = new User();
         user.setId(3);
         user.setName("测试用户");
@@ -47,13 +65,20 @@ public class UserDaoTestCase {
         user.setPhone("12312345678");
         userDao.updateById(user);
     }
+
+    /**
+     * 测试删除
+     */
     @Test
     void testDelete(){
         userDao.deleteById(4);
     }
+
+    /**
+     * 测试分页
+     */
     @Test
     void testGetPage() {
-        // 分页测试
         IPage page = new Page(2, 5);
         userDao.selectPage(page, null);
         System.out.println(page.getCurrent());
@@ -62,16 +87,22 @@ public class UserDaoTestCase {
         System.out.println(page.getPages());
         System.out.println(page.getRecords());
     }
+
+    /**
+     * 测试条件查询
+     */
     @Test
     void testGetByCondiction1() {
-        // 条件查询
         QueryWrapper<User> qw = new QueryWrapper<>();
         qw.like("name", "admin");
         userDao.selectList(qw);
     }
+
+    /**
+     * 测试得到condiction2
+     */
     @Test
     void testGetByCondiction2() {
-        // 条件查询
 //        String name = "admin";
         String name = null;
         LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<>();
