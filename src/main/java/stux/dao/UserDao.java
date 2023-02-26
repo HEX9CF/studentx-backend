@@ -1,6 +1,6 @@
-package cn.stux.dao;
+package stux.dao;
 
-import cn.stux.domain.User;
+import stux.domain.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

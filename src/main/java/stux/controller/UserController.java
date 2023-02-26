@@ -1,4 +1,4 @@
-package cn.stux.controller;
+package stux.controller;
 
 public class UserController {
 }

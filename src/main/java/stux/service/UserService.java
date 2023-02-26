@@ -1,6 +1,6 @@
-package cn.stux.service;
+package stux.service;
 
-import cn.stux.domain.User;
+import stux.domain.User;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 

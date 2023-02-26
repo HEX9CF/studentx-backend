@@ -1,5 +1,5 @@
 
-package cn.stux.domain;
+package stux.domain;
 
 import lombok.Data;
 

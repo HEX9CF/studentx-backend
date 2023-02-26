@@ -1,8 +1,8 @@
-package cn.stux.service.impl;
+package stux.service.impl;
 
-import cn.stux.dao.UserDao;
-import cn.stux.domain.User;
-import cn.stux.service.UserService;
+import stux.dao.UserDao;
+import stux.domain.User;
+import stux.service.UserService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

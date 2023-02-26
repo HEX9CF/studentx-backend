@@ -1,6 +1,7 @@
-package cn.stux.dao;
+package stux.dao;
 
-import cn.stux.domain.User;
+import stux.dao.UserDao;
+import stux.domain.User;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
