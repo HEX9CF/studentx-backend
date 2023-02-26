@@ -99,7 +99,7 @@ public class UserDaoTestCase {
     }
 
     /**
-     * 测试得到condiction2
+     * 测试条件查询2
      */
     @Test
     void testGetByCondiction2() {
