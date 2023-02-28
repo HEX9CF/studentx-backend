@@ -1,0 +1,156 @@
+<!--
+    File: user.html
+    Author: HEX9CF
+    Version: v1.0.0
+    Creation time: 2023/02/28
+    Modification time: 2023/02/28
+    Description: 用户管理面板
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理 - STUX管理面板</title>
+    <link rel="stylesheet" href="../../public/plugin/element-ui/index.css">
+</head>
+<body>
+<div id="app">
+    <template>
+        <el-table
+                :data="tableData"
+                style="width: 100%"
+                max-height="600">
+            <el-table-column
+                    fixed
+                    prop="id"
+                    label="ID"
+                    width="60">
+            </el-table-column>
+            <el-table-column
+                    prop="name"
+                    label="用户名"
+                    width="120">
+                <template slot-scope="scope">
+                    <el-popover trigger="hover" placement="top">
+                        <p>电子邮箱: {{ scope.row.email }}</p>
+                        <p>手机号码: {{ scope.row.phone }}</p>
+                        <div slot="reference" class="name-wrapper">
+                            <el-tag size="medium">{{ scope.row.name }}</el-tag>
+                        </div>
+                    </el-popover>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="regdate"
+                    label="注册时间"
+                    width="120">
+            </el-table-column>
+            <el-table-column label="操作">
+                <template slot-scope="scope">
+                    <!--<el-button
+                            size="mini"
+                            @click="handleEdit(scope.row)">编辑</el-button>-->
+                    <!--<el-button
+                            size="mini"
+                            type="warning"
+                            @click="handleBan(scope.row)">封禁</el-button>-->
+                    <el-button
+                            size="mini"
+                            type="danger"
+                            @click="handleDelete(scope.row)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </template>
+    <div class="pagination-container">
+        <el-pagination
+                class="pagiantion"
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="pagination.currentPage"
+                :page-sizes="[10, 50, 100, 500]"
+                :page-size="pagination.pageSize"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="pagination.total">
+        </el-pagination>
+    </div>
+</div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/plugin/element-ui/index.js"></script>
+<script src="../../public/js/axios-0.18.0.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            tableData: [],
+            pagination: {
+                currentPage: 1,
+                pageSize: 10,
+                total: 0
+            }
+
+        },
+        created() {
+            // this.getAll();
+            this.getPage();
+        },
+        methods: {
+            /*getAll() {
+                axios.get('/user').then((res) => {
+                    // console.log(res.data);
+                    this.tableData = res.data.data;
+                })
+            },*/
+            getPage() {
+                axios.get("/user/" + this.pagination.currentPage + "/" + this.pagination.pageSize).then((res) => {
+                    // console.log(res.data);
+                    this.pagination.total = res.data.data.total;
+                    this.pagination.currentPage = res.data.data.current;
+                    this.pagination.pageSize = res.data.data.size;
+                    this.tableData = res.data.data.records;
+                })
+            },
+            handleSizeChange(val) {
+                // console.log(`每页 ${val} 条`);
+                this.pagination.pageSize = val;
+                this.getPage();
+            },
+            handleCurrentChange(val) {
+                // console.log(`当前页: ${val}`);
+                this.pagination.currentPage = val;
+                this.getPage();
+            },
+            handleDelete(row) {
+                console.log(row);
+                this.$confirm('此操作将永久删除该账号, 是否继续?', '警告', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    axios.delete("/user/" + row.id).then((res) => {
+                        if(res.data.flag) {
+                            this.$message({
+                                type: 'success',
+                                message: res.data.msg
+                            });
+                        }else{
+                            this.$message({
+                                type: 'error',
+                                message: res.data.msg
+                            });
+                        }
+                    }).finally(() => {
+                        this.getPage();
+                    });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+            },
+        }
+    })
+</script>
+</html>
