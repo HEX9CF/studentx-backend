@@ -27,7 +27,7 @@
                     width="60">
             </el-table-column>
             <el-table-column
-                    prop="name"
+                    prop="uname"
                     label="用户名"
                     width="120">
                 <template slot-scope="scope">
@@ -40,7 +40,7 @@
                         <p>家乡: {{ scope.row.hometown }}</p>
                         <p>个性签名: {{ scope.row.signature }}</p>
                         <div slot="reference" class="name-wrapper">
-                            <el-tag size="medium">{{ scope.row.name }}</el-tag>
+                            <el-tag size="medium">{{ scope.row.uname }}</el-tag>
                         </div>
                     </el-popover>
                 </template>
@@ -61,7 +61,7 @@
                     width="120">
             </el-table-column>
             <el-table-column
-                    prop="comment"
+                    prop="remark"
                     label="评论数"
                     width="120">
             </el-table-column>

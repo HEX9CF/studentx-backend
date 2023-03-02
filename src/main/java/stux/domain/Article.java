@@ -11,14 +11,14 @@ import lombok.Data;
 @Data
 public class Article {
     private Integer id;
-    private Integer column;
+    private Integer block;
     private String title;
     private String author;
     private String content;
     private String crtime;
     private String uptime;
-    private Integer read;
-    private Integer like;
-    private Integer comment;
+    private Integer viewed;
+    private Integer liked;
+    private Integer remark;
     private Integer ban;
 }

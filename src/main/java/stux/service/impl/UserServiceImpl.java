@@ -80,7 +80,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
     @Override
     public IPage<User> getPage(int currentPage, int pageSize, User user){
         LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<User>();
-        lqw.like(Strings.isNotEmpty(user.getName()), User::getName, user.getName());
+        lqw.like(Strings.isNotEmpty(user.getUname()), User::getUname, user.getUname());
         IPage page = new Page(currentPage, pageSize);
         userDao.selectPage(page, lqw);
         return page;

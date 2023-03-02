@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class User {
     private Integer id;
-    private String name;
+    private String uname;
     private String passwd;
     private String email;
     private String phone;
@@ -28,6 +28,6 @@ public class User {
     private String signature;
     private Integer ban;
     private Integer article;
-    private Integer comment;
+    private Integer remark;
     private String regtime;
 }

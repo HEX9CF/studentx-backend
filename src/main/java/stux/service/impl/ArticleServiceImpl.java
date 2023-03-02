@@ -81,7 +81,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleDao, Article> impleme
     public IPage<Article> getPage(int currentPage, int pageSize, Article article) {
         LambdaQueryWrapper<Article> lqw = new LambdaQueryWrapper<Article>();
         lqw.like(Strings.isNotEmpty(article.getTitle()), Article::getTitle, article.getTitle());
-        lqw.like(article.getColumn() != 0, Article::getTitle, article.getTitle());
+        lqw.like(article.getBlock() != 0, Article::getBlock, article.getBlock());
         IPage page = new Page(currentPage, pageSize);
         articleDao.selectPage(page, lqw);
         return page;
