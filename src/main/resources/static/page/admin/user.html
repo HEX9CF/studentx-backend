@@ -31,9 +31,14 @@
                     label="用户名"
                     width="120">
                 <template slot-scope="scope">
-                    <el-popover trigger="hover" placement="top">
-                        <p>电子邮箱: {{ scope.row.email }}</p>
-                        <p>手机号码: {{ scope.row.phone }}</p>
+                    <el-popover trigger="hover" placement="right">
+                        <p>性别: {{ scope.row.sex }}</p>
+                        <p>学校: {{ scope.row.school }}</p>
+                        <p>专业: {{ scope.row.major }}</p>
+                        <p>年级: {{ scope.row.grade }}</p>
+                        <p>所在地: {{ scope.row.location }}</p>
+                        <p>家乡: {{ scope.row.hometown }}</p>
+                        <p>个性签名: {{ scope.row.signature }}</p>
                         <div slot="reference" class="name-wrapper">
                             <el-tag size="medium">{{ scope.row.name }}</el-tag>
                         </div>
@@ -41,7 +46,27 @@
                 </template>
             </el-table-column>
             <el-table-column
-                    prop="regdate"
+                    prop="email"
+                    label="电子邮箱"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="phone"
+                    label="手机号"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="article"
+                    label="发帖数"
+                    width="120">
+            </el-table-column>
+            <el-table-column
+                    prop="comment"
+                    label="评论数"
+                    width="120">
+            </el-table-column>
+            <el-table-column
+                    prop="regtime"
                     label="注册时间"
                     width="120">
             </el-table-column>

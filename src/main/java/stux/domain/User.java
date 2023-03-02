@@ -24,9 +24,12 @@ public class User {
     private Integer birthday;
     private String school;
     private String major;
+    private String grade;
     private String location;
     private String hometown;
     private String signature;
     private Integer ban;
-    private String regdate;
+    private Integer article;
+    private Integer comment;
+    private String regtime;
 }
