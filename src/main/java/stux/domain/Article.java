@@ -1,11 +1,14 @@
 package stux.domain;
 
+import lombok.Data;
+
 /**
  * 文章实体类
  *
  * @author HEX9CF
  * @date 2023/03/02
  */
+@Data
 public class Article {
     private Integer id;
     private Integer column;
