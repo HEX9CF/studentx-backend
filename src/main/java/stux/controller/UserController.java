@@ -3,8 +3,8 @@ package stux.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import stux.controller.util.R;
-import stux.domain.User;
+import stux.pojo.Result;
+import stux.pojo.User;
 import stux.service.UserService;
 import java.io.IOException;
 
@@ -23,59 +23,59 @@ public class UserController {
     /**
      * 获取全部
      *
-     * @return {@link R}
+     * @return {@link Result}
      */
     @GetMapping
-    public R getAll(){
-        return new R(true, userService.list());
+    public Result getAll(){
+        return new Result(true, userService.list());
     }
 
     /**
      * 保存
      *
      * @param user
-     * @return {@link R}
+     * @return {@link Result}
      * @throws IOException
      */
     @PostMapping
-    public R save(@RequestBody User user) throws IOException {
+    public Result save(@RequestBody User user) throws IOException {
         boolean flag = userService.save(user);
-        return new R(flag, flag ? "注册成功" : "注册失败");
+        return new Result(flag, flag ? "注册成功" : "注册失败");
     }
 
     /**
      * 修改
      *
      * @param user
-     * @return {@link R}
+     * @return {@link Result}
      */
     @PutMapping
-    public R modify(@RequestBody User user) {
+    public Result modify(@RequestBody User user) {
         boolean flag = userService.modify(user);
-        return new R(flag, flag ? "修改成功" : "修改失败");
+        return new Result(flag, flag ? "修改成功" : "修改失败");
     }
 
     /**
      * 删除
      *
      * @param id
-     * @return {@link R}
+     * @return {@link Result}
      */
     @DeleteMapping("{id}")
-    public R delete(@PathVariable Integer id) {
+    public Result delete(@PathVariable Integer id) {
         boolean flag = userService.delete(id);
-        return new R(flag, flag ? "删除成功" : "数据同步失败");
+        return new Result(flag, flag ? "删除成功" : "数据同步失败");
     }
 
     /**
      * 通过id查询
      *
      * @param id
-     * @return {@link R}
+     * @return {@link Result}
      */
     @GetMapping("{id}")
-    public R getById(@PathVariable Integer id) {
-        return new R(true, userService.getById(id));
+    public Result getById(@PathVariable Integer id) {
+        return new Result(true, userService.getById(id));
     }
 
     /**
@@ -84,14 +84,14 @@ public class UserController {
      * @param currentPage
      * @param pageSize
      * @param user
-     * @return {@link R}
+     * @return {@link Result}
      */
     @GetMapping("{currentPage}/{pageSize}")
-    public R getPage(@PathVariable int currentPage, @PathVariable int pageSize, User user){
+    public Result getPage(@PathVariable int currentPage, @PathVariable int pageSize, User user){
         IPage<User> page = userService.getPage(currentPage, pageSize, user);
         if(currentPage > page.getPages()){
             page = userService.getPage((int)page.getPages(), pageSize, user);
         }
-        return new R(null != page, page);
+        return new Result(null != page, page);
     }
 }

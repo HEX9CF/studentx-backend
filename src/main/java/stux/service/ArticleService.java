@@ -2,7 +2,7 @@ package stux.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import stux.domain.Article;
+import stux.pojo.Article;
 
 /**
  * 文章服务层接口

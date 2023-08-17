@@ -1,6 +1,6 @@
 package stux.service;
 
-import stux.domain.User;
+import stux.pojo.User;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 

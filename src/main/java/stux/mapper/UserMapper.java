@@ -1,6 +1,6 @@
-package stux.dao;
+package stux.mapper;
 
-import stux.domain.User;
+import stux.pojo.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -11,6 +11,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2023/02/24
  */
 @Mapper
-public interface UserDao extends BaseMapper<User> {
+public interface UserMapper extends BaseMapper<User> {
 
 }

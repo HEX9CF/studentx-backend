@@ -1,7 +1,6 @@
-package stux.dao;
+package stux.mapper;
 
-import stux.dao.UserDao;
-import stux.domain.User;
+import stux.pojo.User;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -11,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+
 /**
  * 用户DAO测试用例
  *
@@ -18,9 +19,9 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @date 2023/02/24
  */
 @SpringBootTest
-public class UserDaoTestCase {
+public class UserMapperTestCase {
     @Autowired
-    private UserDao userDao;
+    private UserMapper userMapper;
 
     /**
      * 测试保存
@@ -28,12 +29,14 @@ public class UserDaoTestCase {
     @Test
     void testSave() {
         User user = new User();
-        user.setName("测试用户");
-        user.setSex("男");
-        user.setPasswd("qweryuiop");
+        user.setUsername("测试用户1");
+        user.setGender(1);
+        user.setPassword("qweryuiop");
         user.setEmail("test@example.com");
         user.setPhone("12312345678");
-        userDao.insert(user);
+        user.setCreateTime(LocalDateTime.now());
+        user.setUpdateTime(LocalDateTime.now());
+        userMapper.insert(user);
     }
 
     /**
@@ -41,7 +44,7 @@ public class UserDaoTestCase {
      */
     @Test
     void testGetById() {
-        System.out.println(userDao.selectById(1));
+        System.out.println(userMapper.selectById(1));
     }
 
     /**
@@ -49,7 +52,7 @@ public class UserDaoTestCase {
      */
     @Test
     void testGetAll() {
-        System.out.println(userDao.selectList(null));
+        System.out.println(userMapper.selectList(null));
     }
 
     /**
@@ -59,12 +62,12 @@ public class UserDaoTestCase {
     void testUpdate() {
         User user = new User();
         user.setId(3);
-        user.setName("测试用户");
-        user.setSex("女");
-        user.setPasswd("qweryuiop");
+        user.setUsername("测试用户2");
+        user.setGender(2);
+        user.setPassword("qweryuiop");
         user.setEmail("test@example.com");
         user.setPhone("12312345678");
-        userDao.updateById(user);
+        userMapper.updateById(user);
     }
 
     /**
@@ -72,7 +75,7 @@ public class UserDaoTestCase {
      */
     @Test
     void testDelete(){
-        userDao.deleteById(4);
+        userMapper.deleteById(4);
     }
 
     /**
@@ -81,7 +84,7 @@ public class UserDaoTestCase {
     @Test
     void testGetPage() {
         IPage page = new Page(2, 5);
-        userDao.selectPage(page, null);
+        userMapper.selectPage(page, null);
         System.out.println(page.getCurrent());
         System.out.println(page.getSize());
         System.out.println(page.getTotal());
@@ -96,7 +99,7 @@ public class UserDaoTestCase {
     void testGetByCondiction1() {
         QueryWrapper<User> qw = new QueryWrapper<>();
         qw.like("name", "admin");
-        userDao.selectList(qw);
+        userMapper.selectList(qw);
     }
 
     /**
@@ -107,7 +110,7 @@ public class UserDaoTestCase {
 //        String name = "admin";
         String name = null;
         LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<>();
-        lqw.like(Strings.isNotEmpty(name), User::getName, name);
-        userDao.selectList(lqw);
+        lqw.like(Strings.isNotEmpty(name), User::getUsername, name);
+        userMapper.selectList(lqw);
     }
 }

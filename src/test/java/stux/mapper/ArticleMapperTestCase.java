@@ -1,4 +1,4 @@
-package stux.dao;
+package stux.mapper;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @date 2023/03/02
  */
 @SpringBootTest
-public class ArticleDaoTestCase {
+public class ArticleMapperTestCase {
     @Autowired
-    private ArticleDao articleDao;
+    private ArticleMapper articleMapper;
     @Test
     void testGetAll() {
-        articleDao.selectList(null);
+        articleMapper.selectList(null);
     }
 }

@@ -1,8 +1,8 @@
-package stux.controller.util;
+package stux.exception;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import stux.pojo.Result;
 
 /**
  * 异常处理器
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ExceptionAdvice {
     @ExceptionHandler(Exception.class)
-    public R doException(Exception e){
+    public Result doException(Exception e){
        e.printStackTrace();
-       return new R("服务器故障，请稍后重试");
+       return new Result("服务器故障，请稍后重试");
     }
 
 

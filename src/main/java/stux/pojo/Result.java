@@ -1,6 +1,8 @@
-package stux.controller.util;
+package stux.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 前后端数据协议
@@ -9,16 +11,17 @@ import lombok.Data;
  * @date 2023/02/27
  */
 @Data
-public class R {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Result {
     private Boolean flag;
     private Object data;
     private String msg;
-    public R() {}
 
     /**
      * @param flag
      */
-    public R(Boolean flag) {
+    public Result(Boolean flag) {
         this.flag = flag;
     }
 
@@ -26,7 +29,7 @@ public class R {
      * @param flag
      * @param data
      */
-    public R(Boolean flag, Object data){
+    public Result(Boolean flag, Object data){
         this.flag = flag;
         this.data = data;
     }
@@ -35,7 +38,7 @@ public class R {
      * @param flag
      * @param msg
      */
-    public R(Boolean flag, String msg) {
+    public Result(Boolean flag, String msg) {
         this.flag = flag;
         this.msg = msg;
     }
@@ -43,7 +46,7 @@ public class R {
     /**
      * @param msg
      */
-    public R(String msg){
+    public Result(String msg){
         this.flag = false;
         this.msg = msg;
     }

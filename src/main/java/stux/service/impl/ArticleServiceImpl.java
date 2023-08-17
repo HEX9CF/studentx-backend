@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import stux.dao.ArticleDao;
-import stux.domain.Article;
+import stux.mapper.ArticleMapper;
+import stux.pojo.Article;
 import stux.service.ArticleService;
 
 /**
@@ -18,9 +18,9 @@ import stux.service.ArticleService;
  * @date 2023/03/02
  */
 @Service
-public class ArticleServiceImpl extends ServiceImpl<ArticleDao, Article> implements ArticleService {
+public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
     @Autowired
-    private ArticleDao articleDao;
+    private ArticleMapper articleMapper;
 
     /**
      * 保存
@@ -30,7 +30,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleDao, Article> impleme
      */
     @Override
     public boolean save(Article article) {
-        return articleDao.insert(article) > 0;
+        return articleMapper.insert(article) > 0;
     }
 
     /**
@@ -41,7 +41,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleDao, Article> impleme
      */
     @Override
     public boolean modify(Article article) {
-        return articleDao.updateById(article) > 0;
+        return articleMapper.updateById(article) > 0;
     }
 
     /**
@@ -52,7 +52,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleDao, Article> impleme
      */
     @Override
     public boolean delete(Integer id) {
-        return articleDao.deleteById(id) > 0;
+        return articleMapper.deleteById(id) > 0;
     }
 
     /**
@@ -65,7 +65,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleDao, Article> impleme
     @Override
     public IPage<Article> getPage(int currentPage, int pageSize) {
         IPage page = new Page(currentPage, pageSize);
-        articleDao.selectPage(page, null);
+        articleMapper.selectPage(page, null);
         return page;
     }
 
@@ -81,9 +81,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleDao, Article> impleme
     public IPage<Article> getPage(int currentPage, int pageSize, Article article) {
         LambdaQueryWrapper<Article> lqw = new LambdaQueryWrapper<Article>();
         lqw.like(Strings.isNotEmpty(article.getTitle()), Article::getTitle, article.getTitle());
-        lqw.like(article.getBlock() != 0, Article::getBlock, article.getBlock());
+        lqw.like(article.getBlockId() != 0, Article::getBlockId, article.getBlockId());
         IPage page = new Page(currentPage, pageSize);
-        articleDao.selectPage(page, lqw);
+        articleMapper.selectPage(page, lqw);
         return page;
     }
 }

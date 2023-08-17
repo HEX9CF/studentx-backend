@@ -1,12 +1,11 @@
 package stux.service;
 
-import stux.domain.User;
+import stux.pojo.User;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import stux.service.UserService;
 
 /**
  * 用户服务层测试用例
@@ -33,9 +32,9 @@ public class UserServiceTestCase {
     @Test
     void testSave() {
         User user = new User();
-        user.setName("测试用户");
-        user.setSex("男");
-        user.setPasswd("qweryuiop");
+        user.setUsername("测试用户");
+        user.setGender(1);
+        user.setPassword("qweryuiop");
         user.setEmail("test@example.com");
         user.setPhone("12312345678");
         userService.save(user);
@@ -48,9 +47,9 @@ public class UserServiceTestCase {
     void testUpdate() {
         User user = new User();
         user.setId(5);
-        user.setName("测试用户");
-        user.setSex("女");
-        user.setPasswd("qweryuiop");
+        user.setUsername("测试用户");
+        user.setGender(2);
+        user.setPassword("qweryuiop");
         user.setEmail("test@example.com");
         user.setPhone("12312345678");
         userService.updateById(user);

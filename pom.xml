@@ -8,9 +8,9 @@
 		<version>2.7.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>cn.stux</groupId>
+	<groupId>com.example</groupId>
 	<artifactId>Studentx</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.1</version>
 	<name>Studentx</name>
 	<description>Studentx</description>
 	<properties>

@@ -1,7 +1,7 @@
 package stux.service.impl;
 
-import stux.dao.UserDao;
-import stux.domain.User;
+import stux.mapper.UserMapper;
+import stux.pojo.User;
 import stux.service.UserService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -18,9 +18,9 @@ import org.springframework.stereotype.Service;
  * @date 2023/02/26
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
     @Autowired
-    private UserDao userDao;
+    private UserMapper userMapper;
 
     /**
      * 保存
@@ -30,7 +30,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
      */
     @Override
     public boolean save(User user){
-        return userDao.insert(user) > 0;
+        return userMapper.insert(user) > 0;
     }
 
     /**
@@ -41,7 +41,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
      */
     @Override
     public boolean modify(User user){
-        return userDao.updateById(user) > 0;
+        return userMapper.updateById(user) > 0;
     }
 
     /**
@@ -52,7 +52,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
      */
     @Override
     public boolean delete(Integer id) {
-        return userDao.deleteById(id) > 0;
+        return userMapper.deleteById(id) > 0;
     }
 
     /**
@@ -65,7 +65,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
     @Override
     public IPage<User> getPage(int currentPage, int pageSize) {
         IPage page = new Page(currentPage, pageSize);
-        userDao.selectPage(page, null);
+        userMapper.selectPage(page, null);
         return page;
     }
 
@@ -80,9 +80,9 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
     @Override
     public IPage<User> getPage(int currentPage, int pageSize, User user){
         LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<User>();
-        lqw.like(Strings.isNotEmpty(user.getUname()), User::getUname, user.getUname());
+        lqw.like(Strings.isNotEmpty(user.getUsername()), User::getUsername, user.getUsername());
         IPage page = new Page(currentPage, pageSize);
-        userDao.selectPage(page, lqw);
+        userMapper.selectPage(page, lqw);
         return page;
     }
 }
