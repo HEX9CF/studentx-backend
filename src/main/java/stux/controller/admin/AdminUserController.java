@@ -1,4 +1,4 @@
-package stux.controller;
+package stux.controller.admin;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,14 +9,14 @@ import stux.service.UserService;
 import java.io.IOException;
 
 /**
- * 用户控制器
+ * 管理用户控制器
  *
  * @author HEX9CF
  * @date 2023/02/27
  */
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/admin/user")
+public class AdminUserController {
     @Autowired
     private UserService userService;
 

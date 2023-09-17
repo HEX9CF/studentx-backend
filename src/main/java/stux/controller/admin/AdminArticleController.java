@@ -1,4 +1,4 @@
-package stux.controller;
+package stux.controller.admin;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +8,14 @@ import stux.pojo.Article;
 import stux.service.ArticleService;
 
 /**
- * 文章控制器
+ * 管理文章控制器
  *
  * @author HEX9CF
  * @date 2023/03/02
  */
 @RestController
-@RequestMapping("/article")
-public class ArticleController {
+@RequestMapping("/admin/article")
+public class AdminArticleController {
     @Autowired
     ArticleService articleService;
 
