@@ -26,7 +26,7 @@ public class AdminArticleController {
      */
     @GetMapping
     public Result getAll() {
-        return new Result(true, articleService.list());
+        return Result.success(articleService.list());
     }
 
     /**
@@ -38,7 +38,10 @@ public class AdminArticleController {
     @PostMapping
     public Result modify(@RequestBody Article article) {
         boolean flag = articleService.modify(article);
-        return new Result(flag, flag ? "修改成功" : "修改失败");
+        if(flag) {
+            return new Result(1, "修改成功", null);
+        }
+        return new Result(0, "修改失败", null);
     }
 
     /**
@@ -50,7 +53,10 @@ public class AdminArticleController {
     @DeleteMapping("{id}")
     public Result delete(@PathVariable Integer id) {
         boolean flag = articleService.delete(id);
-        return new Result(flag, flag ? "删除成功" : "删除失败");
+        if(flag) {
+            return new Result(1, "删除成功", null);
+        }
+        return new Result(0, "删除失败", null);
     }
 
     /**
@@ -61,7 +67,7 @@ public class AdminArticleController {
      */
     @GetMapping("{id}")
     public Result getById(@PathVariable Integer id) {
-        return new Result(true, articleService.getById(id));
+        return Result.success(articleService.getById(id));
     }
 
     /**
@@ -78,6 +84,9 @@ public class AdminArticleController {
         if(currentPage > page.getPages()){
             page = articleService.getPage((int)page.getPages(), pageSize, article);
         }
-        return new Result(null != page, page);
+        if(null != page) {
+            return Result.success(page);
+        }
+        return Result.error();
     }
 }

@@ -27,7 +27,7 @@ public class AdminUserController {
      */
     @GetMapping
     public Result getAll(){
-        return new Result(true, userService.list());
+        return Result.success(userService.list());
     }
 
     /**
@@ -40,7 +40,10 @@ public class AdminUserController {
     @PostMapping
     public Result save(@RequestBody User user) throws IOException {
         boolean flag = userService.save(user);
-        return new Result(flag, flag ? "注册成功" : "注册失败");
+        if(flag) {
+            return new Result(1, "注册成功", null);
+        }
+        return new Result(0, "注册失败", null);
     }
 
     /**
@@ -52,7 +55,10 @@ public class AdminUserController {
     @PutMapping
     public Result modify(@RequestBody User user) {
         boolean flag = userService.modify(user);
-        return new Result(flag, flag ? "修改成功" : "修改失败");
+        if(flag) {
+            return new Result(1, "修改成功", null);
+        }
+        return new Result(0, "修改失败", null);
     }
 
     /**
@@ -64,7 +70,10 @@ public class AdminUserController {
     @DeleteMapping("{id}")
     public Result delete(@PathVariable Integer id) {
         boolean flag = userService.delete(id);
-        return new Result(flag, flag ? "删除成功" : "数据同步失败");
+        if(flag) {
+            return new Result(1, "删除成功", null);
+        }
+        return new Result(0, "删除失败", null);
     }
 
     /**
@@ -75,7 +84,7 @@ public class AdminUserController {
      */
     @GetMapping("{id}")
     public Result getById(@PathVariable Integer id) {
-        return new Result(true, userService.getById(id));
+        return Result.success(userService.getById(id));
     }
 
     /**
@@ -92,6 +101,9 @@ public class AdminUserController {
         if(currentPage > page.getPages()){
             page = userService.getPage((int)page.getPages(), pageSize, user);
         }
-        return new Result(null != page, page);
+        if(null != page) {
+            return Result.success(page);
+        }
+        return Result.error();
     }
 }

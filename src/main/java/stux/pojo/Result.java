@@ -14,40 +14,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Result {
-    private Boolean flag;
-    private Object data;
-    private String msg;
+    private Integer code;   // 响应码：1 OK，0 Error
+    private String msg;     // 响应信息
+    private Object data;    // 返回数据
 
-    /**
-     * @param flag
-     */
-    public Result(Boolean flag) {
-        this.flag = flag;
+    public static Result success() {
+        return new Result(1, "OK", null);
     }
 
-    /**
-     * @param flag
-     * @param data
-     */
-    public Result(Boolean flag, Object data){
-        this.flag = flag;
-        this.data = data;
+    public static Result success(Object data) {
+        return new Result(1, "OK", data);
     }
 
-    /**
-     * @param flag
-     * @param msg
-     */
-    public Result(Boolean flag, String msg) {
-        this.flag = flag;
-        this.msg = msg;
-    }
-
-    /**
-     * @param msg
-     */
-    public Result(String msg){
-        this.flag = false;
-        this.msg = msg;
+    public static Result error() {
+        return new Result(0, "Error", null);
     }
 }
