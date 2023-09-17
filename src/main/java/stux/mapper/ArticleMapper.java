@@ -5,10 +5,10 @@ import org.apache.ibatis.annotations.Mapper;
 import stux.pojo.Article;
 
 /**
- * 文章数据访问对象
+ * 项目映射器
  *
  * @author HEX9CF
- * @date 2023/03/02
+ * @date 2023/09/17
  */
 @Mapper
 public interface ArticleMapper extends BaseMapper<Article> {
