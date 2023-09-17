@@ -26,7 +26,19 @@ public class Result {
         return new Result(1, "OK", data);
     }
 
+    public static Result success(String msg, Object data) {
+        return new Result(1, msg, data);
+    }
+
     public static Result error() {
         return new Result(0, "Error", null);
+    }
+
+    public static Result error(Object data) {
+        return new Result(0, "Error", data);
+    }
+
+    public static Result error(String msg, Object data) {
+        return new Result(0, msg, data);
     }
 }

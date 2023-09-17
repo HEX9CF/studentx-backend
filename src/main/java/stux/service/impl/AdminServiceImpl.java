@@ -47,7 +47,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         map.put("password", admin.getPassword());
         queryWrapper.allEq(map);
         List<Admin> admins = adminMapper.selectList(queryWrapper);
-        return admins.isEmpty();
+        return !admins.isEmpty();
     }
 
     @Override

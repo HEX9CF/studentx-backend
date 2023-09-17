@@ -17,6 +17,4 @@ public class ExceptionAdvice {
        e.printStackTrace();
        return new Result(0, "服务器故障，请稍后重试", null);
     }
-
-
 }

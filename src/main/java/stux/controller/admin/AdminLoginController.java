@@ -11,6 +11,9 @@ import stux.service.AdminService;
 import stux.utils.JwtUtils;
 import stux.pojo.Result;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 管理员登录控制器
  *
@@ -32,8 +35,13 @@ public class AdminLoginController {
         log.info("管理员登录：{}", admin);
         Boolean login = adminService.login(admin);
         if(login) {
-
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("id", admin.getId());
+            claims.put("username", admin.getUsername());
+            claims.put("password", admin.getPassword());
+            String jwt = jwtUtils.generateJwt(claims);
+            return Result.success(jwt);
         }
-        return new Result();
+        return Result.error("登录失败，用户名或密码错误", null);
     }
 }

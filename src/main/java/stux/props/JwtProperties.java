@@ -1,4 +1,4 @@
-package stux.utils;
+package stux.props;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

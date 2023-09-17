@@ -23,5 +23,10 @@ mybatis-plus:
     # MP调试日志标准输出
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+jwt:
+  # 签名秘钥
+  sign-key: "studentx"
+  # 有效期
+  expiration: 2592000000
 
 
