@@ -16,15 +16,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Article {
-    private Integer id;
-    private Integer blockId;
-    private String title;
-    private Integer authorId;
-    private String content;
-    private LocalDateTime createTime;
-    private LocalDateTime updateTime;
-    private Integer viewed;
-    private Integer liked;
-    private Integer commented;
-    private Integer ban;
+    private Integer id;         // 文章id
+    private Integer blockId;    // 板块id
+    private String title;       // 标题
+    private Integer authorId;   // 作者id
+    private String content;     // 正文
+    private LocalDateTime createTime;   // 创建时间
+    private LocalDateTime updateTime;   // 更新时间
+    private Integer ban;        // 封禁状态
 }

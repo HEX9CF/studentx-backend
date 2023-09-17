@@ -18,22 +18,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    private Integer id;
-    private String username;
-    private String password;
-    private String email;
-    private String phone;
-    private Integer gender;
-    private LocalDate birthday;
-    private String school;
-    private String major;
-    private Integer entryYear;
-    private String location;
-    private String hometown;
-    private String signature;
-    private Integer ban;
-    private Integer article;
-    private Integer comment;
-    private LocalDateTime createTime;
-    private LocalDateTime updateTime;
+    private Integer id;         // 用户id
+    private String username;    // 用户名
+    private String password;    // 密码
+    private String email;       // 邮箱
+    private String phone;       // 手机号
+    private LocalDateTime createTime;   // 创建时间
+    private LocalDateTime updateTime;   // 修改时间
+    private Integer ban;        // 封禁状态
 }
