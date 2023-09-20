@@ -30,23 +30,32 @@ public class AdminLoginController {
     @Autowired
     JwtUtils jwtUtils;
 
+    /**
+     * 登录
+     *
+     * @param user 使用者
+     * @return {@link Result}
+     */
     @PostMapping
     public Result login(@RequestBody User user) {
         log.info("管理员登录：{}", user);
-        User user1 = userService.login(user);
-        if(user1 == null) {
+
+        // 登录校验
+        user = userService.login(user);
+        if(user == null) {
             return Result.error("登录失败，用户名或密码错误", null);
         }
-        if(user1.getBan().equals(1)) {
+        if(user.getBan().equals(1)) {
             return Result.error("登录失败，账号被封禁，请联系管理员", null);
         }
-        if(user1.getAdmin().equals(0)) {
+        if(user.getAdmin().equals(0)) {
             return Result.error("登录失败，权限不足", null);
         }
+
+        // 校验通过，发放令牌
         Map<String, Object> claims = new HashMap<>();
         claims.put("id", user.getId());
         claims.put("username", user.getUsername());
-        claims.put("ban", user.getBan());
         claims.put("admin", user.getAdmin());
         String jwt = jwtUtils.generateJwt(claims);
         return Result.success(jwt);
