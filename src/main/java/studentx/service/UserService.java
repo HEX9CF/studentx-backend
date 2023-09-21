@@ -11,10 +11,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @date 2023/02/26
  */
 public interface UserService extends IService<User> {
-    boolean save(User user);
+    boolean add(User user);
     boolean modify(User user);
     boolean delete(Integer id);
     User login(User user);
+    User getByUsername(String username);
     IPage<User> getPage(int currentPage, int pageSize);
     IPage<User> getPage(int currentPage, int pageSize, User user);
 }

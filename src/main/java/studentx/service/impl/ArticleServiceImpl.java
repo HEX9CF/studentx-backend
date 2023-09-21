@@ -29,7 +29,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
      * @return boolean
      */
     @Override
-    public boolean save(Article article) {
+    public boolean add(Article article) {
         return articleMapper.insert(article) > 0;
     }
 

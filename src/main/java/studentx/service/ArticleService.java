@@ -11,7 +11,7 @@ import studentx.pojo.Article;
  * @date 2023/03/02
  */
 public interface ArticleService extends IService<Article> {
-    boolean save(Article article);
+    boolean add(Article article);
     boolean modify(Article article);
     boolean delete(Integer id);
     IPage<Article> getPage(int currentPage, int pageSize);

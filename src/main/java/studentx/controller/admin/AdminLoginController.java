@@ -40,6 +40,14 @@ public class AdminLoginController {
     public Result login(@RequestBody User user) {
         log.info("管理员登录：{}", user);
 
+        // 验证必填项
+        if(user.getUsername().isEmpty()) {
+            return Result.error("登录失败，用户名不能为空", null);
+        }
+        if(user.getPassword().isEmpty()) {
+            return Result.error("登录失败，密码不能为空", null);
+        }
+
         // 登录校验
         user = userService.login(user);
         if(user == null) {

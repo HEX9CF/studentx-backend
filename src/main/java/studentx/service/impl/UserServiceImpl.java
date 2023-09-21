@@ -12,6 +12,7 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -29,13 +30,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private UserMapper userMapper;
 
     /**
-     * 保存
+     * 添加
      *
-     * @param user 用户
+     * @param user 使用者
      * @return boolean
      */
     @Override
-    public boolean save(User user){
+    public boolean add(User user) {
+        LocalDateTime time = LocalDateTime.now();
+        user.setCreateTime(time);
+        user.setUpdateTime(time);
         return userMapper.insert(user) > 0;
     }
 
@@ -47,6 +51,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      */
     @Override
     public boolean modify(User user){
+        user.setUpdateTime(LocalDateTime.now());
         return userMapper.updateById(user) > 0;
     }
 
@@ -78,6 +83,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     /**
+     * 按用户名获取
+     *
+     * @param username 用户名
+     * @return {@link User}
+     */
+    @Override
+    public User getByUsername(String username) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username", username);
+        return userMapper.selectOne(queryWrapper);
+    }
+
+    /**
      * 分页功能
      *
      * @param currentPage 当前页面
@@ -92,7 +110,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     /**
-     * 按条件查询
+     * 按条件查询分页
      *
      * @param currentPage 当前页面
      * @param pageSize    页面大小
