@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import studentx.pojo.Article;
 
 /**
- * 项目映射器
+ * 文章映射器
  *
  * @author HEX9CF
  * @date 2023/09/17
