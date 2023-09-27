@@ -18,7 +18,7 @@ import studentx.service.UserService;
  */
 @Slf4j
 @RestController
-@RequestMapping("/user/register")
+@RequestMapping("/api/user/register")
 public class UserRegisterController {
     @Autowired
     UserService userService;

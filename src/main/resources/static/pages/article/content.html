@@ -19,7 +19,7 @@
         mounted(){
             const url = new URL(window.location.href);
             var id = url.searchParams.get("id");
-            axios.get('/article/' + id).then((res) => {
+            axios.get('/post/' + id).then((res) => {
                 console.log(res.data);
                 this.a = res.data.data;
             })

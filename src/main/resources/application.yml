@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8088
 spring:
   datasource:
     # 数据源设置
@@ -22,6 +22,7 @@ mybatis-plus:
   configuration:
     # MP调试日志标准输出
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
 
 jwt:
   # 签名秘钥

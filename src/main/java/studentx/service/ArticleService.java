@@ -2,7 +2,7 @@ package studentx.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import studentx.pojo.Article;
+import studentx.pojo.Post;
 
 /**
  * 文章服务层接口
@@ -10,11 +10,11 @@ import studentx.pojo.Article;
  * @author HEX9CF
  * @date 2023/03/02
  */
-public interface ArticleService extends IService<Article> {
-    boolean add(Article article);
-    boolean modify(Article article);
+public interface ArticleService extends IService<Post> {
+    boolean add(Post post);
+    boolean modify(Post post);
     boolean delete(Integer id);
-    IPage<Article> getPage(int currentPage, int pageSize);
-    IPage<Article> getPage(int currentPage, int pageSize, Article article);
+    IPage<Post> getPage(int currentPage, int pageSize);
+    IPage<Post> getPage(int currentPage, int pageSize, Post post);
 }
 

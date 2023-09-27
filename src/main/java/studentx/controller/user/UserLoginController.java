@@ -22,7 +22,7 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
-@RequestMapping("/user/login")
+@RequestMapping("/api/user/login")
 public class UserLoginController {
     @Autowired
     UserService userService;
@@ -63,6 +63,6 @@ public class UserLoginController {
         claims.put("username", user.getUsername());
         claims.put("admin", user.getAdmin());
         String jwt = jwtUtils.generateJwt(claims);
-        return Result.success(jwt);
+        return Result.success("登录成功", jwt);
     }
 }

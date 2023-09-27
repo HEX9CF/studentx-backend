@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Article {
+public class Post {
     private Integer id;         // 文章id
     private Integer blockId;    // 板块id
     private String title;       // 标题

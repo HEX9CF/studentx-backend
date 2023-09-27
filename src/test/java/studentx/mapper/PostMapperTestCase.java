@@ -1,21 +1,21 @@
-package studentx.service;
+package studentx.mapper;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * 服务条测试用例
+ * 文章数据访问对象测试用例
  *
  * @author HEX9CF
  * @date 2023/03/02
  */
 @SpringBootTest
-public class ArticleServiceTestCase {
+public class PostMapperTestCase {
     @Autowired
-    private ArticleService articleService;
+    private ArticleMapper articleMapper;
     @Test
-    void testGetByAll() {
-        articleService.list();
+    void testGetAll() {
+        articleMapper.selectList(null);
     }
 }

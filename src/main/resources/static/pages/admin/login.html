@@ -86,7 +86,13 @@
                 console.log(this.form);
                 axios.post("/admin/login/", this.form).then((result) => {
                     console.log(result.data);
-                    document.cookie = "token=" + result.data.data;
+                    if(result.data.code === 1) {
+                        document.cookie = "token=" + result.data.data;
+                        this.$message.success(result.data.msg);
+                        window.location.replace("/pages/admin/index.html");
+                    } else {
+                        this.$message.error(result.data.msg);
+                    }
                 });
             }
         }

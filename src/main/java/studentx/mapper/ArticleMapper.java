@@ -2,7 +2,7 @@ package studentx.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import studentx.pojo.Article;
+import studentx.pojo.Post;
 
 /**
  * 文章映射器
@@ -11,5 +11,5 @@ import studentx.pojo.Article;
  * @date 2023/09/17
  */
 @Mapper
-public interface ArticleMapper extends BaseMapper<Article> {
+public interface ArticleMapper extends BaseMapper<Post> {
 }

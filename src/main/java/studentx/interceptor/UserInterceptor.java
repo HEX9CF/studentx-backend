@@ -1,3 +1,4 @@
+/*
 package studentx.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
@@ -13,19 +14,22 @@ import studentx.utils.JwtUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+*/
 /**
  * 用户拦截器
  *
  * @author HEX9CF
  * @date 2023/09/20
- */
+ *//*
+
 @Slf4j
 @Component
 public class UserInterceptor implements HandlerInterceptor {
     @Autowired
     JwtUtils jwtUtils;
 
-    /**
+    */
+/**
      * 预处理
      *
      * @param request  要求
@@ -33,7 +37,8 @@ public class UserInterceptor implements HandlerInterceptor {
      * @param handler  处理程序
      * @return boolean
      * @throws Exception 例外
-     */
+     *//*
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 获取请求URL
@@ -70,3 +75,4 @@ public class UserInterceptor implements HandlerInterceptor {
         return true;
     }
 }
+*/

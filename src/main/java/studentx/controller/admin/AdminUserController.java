@@ -15,7 +15,7 @@ import java.io.IOException;
  * @date 2023/02/27
  */
 @RestController
-@RequestMapping("/admin/user")
+@RequestMapping("/api/admin/user")
 public class AdminUserController {
     @Autowired
     private UserService userService;
@@ -96,7 +96,7 @@ public class AdminUserController {
      * @return {@link Result}
      */
     @GetMapping("{currentPage}/{pageSize}")
-    public Result getPage(@PathVariable int currentPage, @PathVariable int pageSize, User user){
+    public Result getPage(@PathVariable Integer currentPage, @PathVariable Integer pageSize, User user){
         IPage<User> page = userService.getPage(currentPage, pageSize, user);
         if(currentPage > page.getPages()){
             page = userService.getPage((int)page.getPages(), pageSize, user);

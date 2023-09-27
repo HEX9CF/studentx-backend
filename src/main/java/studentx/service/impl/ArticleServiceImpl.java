@@ -8,7 +8,7 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import studentx.mapper.ArticleMapper;
-import studentx.pojo.Article;
+import studentx.pojo.Post;
 import studentx.service.ArticleService;
 
 /**
@@ -18,30 +18,30 @@ import studentx.service.ArticleService;
  * @date 2023/03/02
  */
 @Service
-public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
+public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Post> implements ArticleService {
     @Autowired
     private ArticleMapper articleMapper;
 
     /**
      * 保存
      *
-     * @param article 文章
+     * @param post 文章
      * @return boolean
      */
     @Override
-    public boolean add(Article article) {
-        return articleMapper.insert(article) > 0;
+    public boolean add(Post post) {
+        return articleMapper.insert(post) > 0;
     }
 
     /**
      * 修改
      *
-     * @param article 文章
+     * @param post 文章
      * @return boolean
      */
     @Override
-    public boolean modify(Article article) {
-        return articleMapper.updateById(article) > 0;
+    public boolean modify(Post post) {
+        return articleMapper.updateById(post) > 0;
     }
 
     /**
@@ -60,10 +60,10 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
      *
      * @param currentPage 当前页面
      * @param pageSize    页面大小
-     * @return {@link IPage}<{@link Article}>
+     * @return {@link IPage}<{@link Post}>
      */
     @Override
-    public IPage<Article> getPage(int currentPage, int pageSize) {
+    public IPage<Post> getPage(int currentPage, int pageSize) {
         IPage page = new Page(currentPage, pageSize);
         articleMapper.selectPage(page, null);
         return page;
@@ -74,14 +74,13 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
      *
      * @param currentPage 当前页面
      * @param pageSize    页面大小
-     * @param article     文章
-     * @return {@link IPage}<{@link Article}>
+     * @param post     文章
+     * @return {@link IPage}<{@link Post}>
      */
     @Override
-    public IPage<Article> getPage(int currentPage, int pageSize, Article article) {
-        LambdaQueryWrapper<Article> lqw = new LambdaQueryWrapper<Article>();
-        lqw.like(Strings.isNotEmpty(article.getTitle()), Article::getTitle, article.getTitle());
-        lqw.like(article.getBlockId() != 0, Article::getBlockId, article.getBlockId());
+    public IPage<Post> getPage(int currentPage, int pageSize, Post post) {
+        LambdaQueryWrapper<Post> lqw = new LambdaQueryWrapper<Post>();
+        lqw.like(Strings.isNotEmpty(post.getTitle()), Post::getTitle, post.getTitle());
         IPage page = new Page(currentPage, pageSize);
         articleMapper.selectPage(page, lqw);
         return page;

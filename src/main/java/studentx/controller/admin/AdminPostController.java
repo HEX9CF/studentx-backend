@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import studentx.pojo.Result;
-import studentx.pojo.Article;
+import studentx.pojo.Post;
 import studentx.service.ArticleService;
 
 /**
@@ -14,8 +14,8 @@ import studentx.service.ArticleService;
  * @date 2023/03/02
  */
 @RestController
-@RequestMapping("/admin/article")
-public class AdminArticleController {
+@RequestMapping("/api/admin/post")
+public class AdminPostController {
     @Autowired
     ArticleService articleService;
 
@@ -32,12 +32,12 @@ public class AdminArticleController {
     /**
      * 修改
      *
-     * @param article 文章
+     * @param post 文章
      * @return {@link Result}
      */
     @PostMapping
-    public Result modify(@RequestBody Article article) {
-        boolean flag = articleService.modify(article);
+    public Result modify(@RequestBody Post post) {
+        boolean flag = articleService.modify(post);
         if(flag) {
             return new Result(1, "修改成功", null);
         }
@@ -75,14 +75,14 @@ public class AdminArticleController {
      *
      * @param currentPage 当前页面
      * @param pageSize    页面大小
-     * @param article     文章
+     * @param post     文章
      * @return {@link Result}
      */
     @GetMapping("{currentPage}/{pageSize}")
-    public Result getPage(@PathVariable int currentPage, int pageSize, Article article) {
-        IPage<Article> page = articleService.getPage(currentPage, pageSize, article);
+    public Result getPage(@PathVariable Integer currentPage, @PathVariable Integer pageSize, Post post) {
+        IPage<Post> page = articleService.getPage(currentPage, pageSize, post);
         if(currentPage > page.getPages()){
-            page = articleService.getPage((int)page.getPages(), pageSize, article);
+            page = articleService.getPage((int)page.getPages(), pageSize, post);
         }
         if(null != page) {
             return Result.success(page);

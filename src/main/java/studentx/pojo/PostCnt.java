@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArticleCnt {
+public class PostCnt {
     private Integer readCnt;        // 阅读数
     private Integer likeCnt;        // 点赞数
     private Integer commentCnt;     // 评论数

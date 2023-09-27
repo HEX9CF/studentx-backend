@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserCnt {
-    private Integer articleCnt;   // 发帖数
+    private Integer postCnt;   // 发帖数
     private Integer likeCnt;      // 点赞数
     private Integer comomentCnt;  // 评论数
 }
