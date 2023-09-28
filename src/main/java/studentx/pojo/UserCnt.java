@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 用户计数
+ * 用户计数实体类
  *
  * @author HEX9CF
  * @date 2023/09/17

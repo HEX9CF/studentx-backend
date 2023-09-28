@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 /**
- * 用户信息
+ * 用户信息实体类
  *
  * @author HEX9CF
  * @date 2023/09/17
