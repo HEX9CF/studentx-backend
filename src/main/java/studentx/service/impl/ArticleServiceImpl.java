@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import studentx.mapper.ArticleMapper;
+import studentx.mapper.PostMapper;
 import studentx.pojo.Post;
 import studentx.service.ArticleService;
 
@@ -18,9 +18,9 @@ import studentx.service.ArticleService;
  * @date 2023/03/02
  */
 @Service
-public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Post> implements ArticleService {
+public class ArticleServiceImpl extends ServiceImpl<PostMapper, Post> implements ArticleService {
     @Autowired
-    private ArticleMapper articleMapper;
+    private PostMapper postMapper;
 
     /**
      * 保存
@@ -30,7 +30,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Post> impleme
      */
     @Override
     public boolean add(Post post) {
-        return articleMapper.insert(post) > 0;
+        return postMapper.insert(post) > 0;
     }
 
     /**
@@ -41,7 +41,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Post> impleme
      */
     @Override
     public boolean modify(Post post) {
-        return articleMapper.updateById(post) > 0;
+        return postMapper.updateById(post) > 0;
     }
 
     /**
@@ -52,7 +52,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Post> impleme
      */
     @Override
     public boolean delete(Integer id) {
-        return articleMapper.deleteById(id) > 0;
+        return postMapper.deleteById(id) > 0;
     }
 
     /**
@@ -65,7 +65,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Post> impleme
     @Override
     public IPage<Post> getPage(int currentPage, int pageSize) {
         IPage page = new Page(currentPage, pageSize);
-        articleMapper.selectPage(page, null);
+        postMapper.selectPage(page, null);
         return page;
     }
 
@@ -82,7 +82,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Post> impleme
         LambdaQueryWrapper<Post> lqw = new LambdaQueryWrapper<Post>();
         lqw.like(Strings.isNotEmpty(post.getTitle()), Post::getTitle, post.getTitle());
         IPage page = new Page(currentPage, pageSize);
-        articleMapper.selectPage(page, lqw);
+        postMapper.selectPage(page, lqw);
         return page;
     }
 }

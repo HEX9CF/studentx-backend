@@ -5,11 +5,11 @@ import org.apache.ibatis.annotations.Mapper;
 import studentx.pojo.Post;
 
 /**
- * 文章映射器
+ * 帖子映射器
  *
  * @author HEX9CF
  * @date 2023/09/17
  */
 @Mapper
-public interface ArticleMapper extends BaseMapper<Post> {
+public interface PostMapper extends BaseMapper<Post> {
 }

@@ -13,9 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class PostMapperTestCase {
     @Autowired
-    private ArticleMapper articleMapper;
+    private PostMapper postMapper;
     @Test
     void testGetAll() {
-        articleMapper.selectList(null);
+        postMapper.selectList(null);
     }
 }
