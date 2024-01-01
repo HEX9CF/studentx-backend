@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import studentx.pojo.Result;
 import studentx.pojo.Post;
-import studentx.service.ArticleService;
+import studentx.service.PostService;
 
 /**
  * 管理文章控制器
@@ -17,7 +17,7 @@ import studentx.service.ArticleService;
 @RequestMapping("/api/admin/post")
 public class AdminPostController {
     @Autowired
-    ArticleService articleService;
+    PostService postService;
 
     /**
      * 获取全部
@@ -26,7 +26,7 @@ public class AdminPostController {
      */
     @GetMapping
     public Result getAll() {
-        return Result.success(articleService.list());
+        return Result.success(postService.list());
     }
 
     /**
@@ -37,7 +37,7 @@ public class AdminPostController {
      */
     @PostMapping
     public Result modify(@RequestBody Post post) {
-        boolean flag = articleService.modify(post);
+        boolean flag = postService.modify(post);
         if(flag) {
             return new Result(1, "修改成功", null);
         }
@@ -52,7 +52,7 @@ public class AdminPostController {
      */
     @DeleteMapping("{id}")
     public Result delete(@PathVariable Integer id) {
-        boolean flag = articleService.delete(id);
+        boolean flag = postService.delete(id);
         if(flag) {
             return new Result(1, "删除成功", null);
         }
@@ -67,7 +67,7 @@ public class AdminPostController {
      */
     @GetMapping("{id}")
     public Result getById(@PathVariable Integer id) {
-        return Result.success(articleService.getById(id));
+        return Result.success(postService.getById(id));
     }
 
     /**
@@ -80,9 +80,9 @@ public class AdminPostController {
      */
     @GetMapping("{currentPage}/{pageSize}")
     public Result getPage(@PathVariable Integer currentPage, @PathVariable Integer pageSize, Post post) {
-        IPage<Post> page = articleService.getPage(currentPage, pageSize, post);
+        IPage<Post> page = postService.getPageDesc(currentPage, pageSize, post);
         if(currentPage > page.getPages()){
-            page = articleService.getPage((int)page.getPages(), pageSize, post);
+            page = postService.getPageDesc((int)page.getPages(), pageSize, post);
         }
         if(null != page) {
             return Result.success(page);

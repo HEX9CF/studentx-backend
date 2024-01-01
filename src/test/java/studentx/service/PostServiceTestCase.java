@@ -13,9 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class PostServiceTestCase {
     @Autowired
-    private ArticleService articleService;
+    private PostService postService;
     @Test
     void testGetByAll() {
-        articleService.list();
+        postService.list();
     }
 }

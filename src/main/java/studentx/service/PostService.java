@@ -10,11 +10,12 @@ import studentx.pojo.Post;
  * @author HEX9CF
  * @date 2023/03/02
  */
-public interface ArticleService extends IService<Post> {
+public interface PostService extends IService<Post> {
     boolean add(Post post);
     boolean modify(Post post);
     boolean delete(Integer id);
     IPage<Post> getPage(int currentPage, int pageSize);
-    IPage<Post> getPage(int currentPage, int pageSize, Post post);
+    IPage<Post> getPageDesc(int currentPage, int pageSize);
+    IPage<Post> getPageDesc(int currentPage, int pageSize, Post post);
 }
 

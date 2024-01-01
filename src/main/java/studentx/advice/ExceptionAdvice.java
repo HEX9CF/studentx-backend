@@ -1,4 +1,4 @@
-package studentx.exception;
+package studentx.advice;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

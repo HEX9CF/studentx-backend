@@ -10,6 +10,8 @@ import studentx.pojo.Result;
 import studentx.pojo.User;
 import studentx.service.UserService;
 
+import java.time.LocalDateTime;
+
 /**
  * 用户注册控制器
  *
@@ -25,7 +27,7 @@ public class UserRegisterController {
 
     @PostMapping
     public Result register(@RequestBody User user) {
-        log.info("用户登录：{}", user);
+        log.info("用户注册：{}", user);
 
         // 验证必填项
         if(user.getUsername().isEmpty()) {
