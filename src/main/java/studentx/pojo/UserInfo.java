@@ -16,6 +16,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserInfo {
+    private Integer id;            // ID
+    private Integer userId;         // 用户ID
     private Integer gender;         // 性别
     private LocalDate birthday;     // 生日
     private String school;          // 学校
