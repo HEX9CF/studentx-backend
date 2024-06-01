@@ -14,7 +14,7 @@ import studentx.service.FriendshipService;
 import java.time.LocalDateTime;
 
 /**
- * 友谊服务impl
+ * 友谊服务实现类
  *
  * @author HEX9CF
  * @date 2024/06/01

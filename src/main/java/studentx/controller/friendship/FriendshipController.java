@@ -68,11 +68,11 @@ public class FriendshipController {
         }
 
         // 验证通过，添加好友请求
-        Friendship newFriendship = new Friendship();
-        newFriendship.setUserId(friendship.getFriendId());
-        newFriendship.setFriendId(friendship.getUserId());
-        newFriendship.setStatus(1);
-        friendshipService.add(newFriendship);
+        Friendship friendshipNew = new Friendship();
+        friendshipNew.setUserId(friendship.getFriendId());
+        friendshipNew.setFriendId(friendship.getUserId());
+        friendshipNew.setStatus(1);
+        friendshipService.add(friendshipNew);
         return Result.success("请求成功，请等待对方同意", null);
     }
 

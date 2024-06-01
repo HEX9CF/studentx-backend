@@ -21,7 +21,7 @@ public class Post {
     private String title;       // 标题
     private Integer authorId;   // 作者id
     private String content;     // 正文
+    private Integer status;     // 状态：0 草稿，1 正常，2 被屏蔽
     private LocalDateTime createTime;   // 创建时间
     private LocalDateTime updateTime;   // 更新时间
-    private Integer ban;        // 封禁状态
 }

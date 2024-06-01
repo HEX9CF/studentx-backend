@@ -62,17 +62,16 @@ public class PostController {
      *
      * @param post
      * @return {@link Result}
-     * @throws IOException
      */
     @PostMapping
-    public Result save(@RequestBody Post post) throws IOException {
+    public Result save(@RequestBody Post post) {
         log.info("帖子发布：{}", post);
 
         // 验证必填项
-        if(post.getTitle().isEmpty()) {
+        if(post.getTitle() == null || post.getTitle().isEmpty()) {
             return Result.error("发布失败，标题不能为空", null);
         }
-        if(post.getContent().isEmpty()) {
+        if(post.getContent() == null || post.getContent().isEmpty()) {
             return Result.error("发布失败，内容不能为空", null);
         }
 
@@ -81,7 +80,7 @@ public class PostController {
         postNew.setContent(post.getContent());
         postNew.setAuthorId(post.getAuthorId());
         postNew.setBlockId(post.getBlockId());
-        postNew.setBan(0);
+        postNew.setStatus(1);
 
         boolean flag = postService.add(post);
         if(flag) {
