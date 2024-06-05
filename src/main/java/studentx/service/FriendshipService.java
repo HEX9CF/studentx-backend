@@ -13,8 +13,8 @@ import studentx.pojo.Friendship;
 public interface FriendshipService extends IService<Friendship> {
     boolean add(Friendship friendship);
     boolean modify(Friendship friendship);
-    boolean delete(Friendship friendship);
+    boolean deleteByUserIdAndFriendId(Integer userId, Integer friendId);
     Friendship get(Integer userId, Integer friendId);
     Integer getStatus(Integer userId, Integer friendId);
-    IPage<Friendship> getPageByUserId(int currentPage, int pageSize, Integer userId);
+    IPage<Friendship> getPageByUserIdAndStatus(int currentPage, int pageSize, Integer userId, Integer status);
 }

@@ -20,7 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author HEX9CF
  * @date 2023/09/20
- *//*
+ */
+/*
 
 @Slf4j
 @Component
@@ -37,7 +38,8 @@ public class UserInterceptor implements HandlerInterceptor {
      * @param handler  处理程序
      * @return boolean
      * @throws Exception 例外
-     *//*
+     */
+/*
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

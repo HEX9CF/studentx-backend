@@ -72,6 +72,7 @@ public class FriendshipController {
         friendshipNew.setUserId(friendship.getFriendId());
         friendshipNew.setFriendId(friendship.getUserId());
         friendshipNew.setStatus(1);
+        friendshipNew.setRelationship(friendship.getRelationship());
         friendshipService.add(friendshipNew);
         return Result.success("请求成功，请等待对方同意", null);
     }
@@ -116,29 +117,22 @@ public class FriendshipController {
     /**
      * 解除好友关系
      *
-     * @param friendship 友谊
+     * @param userId   用户id
+     * @param friendId 好友id
      * @return {@link Result }
      */
-    @DeleteMapping
-    public Result unfriend(@RequestBody Friendship friendship) {
-        log.info("解除好友：{}", friendship);
-
-        // 验证必填项
-        if(friendship.getUserId() == null) {
-            return Result.error("解除失败，用户id不能为空", null);
-        }
-        if(friendship.getFriendId() == null) {
-            return Result.error("解除失败，好友id不能为空", null);
-        }
+    @DeleteMapping("{userId}/{friendId}")
+    public Result unfriend(@PathVariable Integer userId, @PathVariable Integer friendId) {
+        log.info("解除好友关系：{} {}", userId, friendId);
 
         // 验证是否存在好友关系
-        Integer status = friendshipService.getStatus(friendship.getUserId(), friendship.getFriendId());
+        Integer status = friendshipService.getStatus(userId, friendId);
         if(status != 2) {
             return Result.error("解除失败，不存在好友关系", null);
         }
 
         // 验证通过，解除好友关系
-        friendshipService.delete(friendship);
+        friendshipService.deleteByUserIdAndFriendId(userId, friendId);
         return Result.success("解除成功", null);
     }
 }

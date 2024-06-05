@@ -52,16 +52,17 @@ public class FriendshipServiceImpl extends ServiceImpl<FriendshipMapper, Friends
     }
 
     /**
-     * 删去
+     * 按用户id和朋友id删除
      *
-     * @param friendship 友谊
+     * @param userId   用户id
+     * @param friendId 好友id
      * @return boolean
      */
     @Override
-    public boolean delete(Friendship friendship) {
+    public boolean deleteByUserIdAndFriendId(Integer userId, Integer friendId) {
         QueryWrapper<Friendship> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_id", friendship.getUserId());
-        queryWrapper.eq("friend_id", friendship.getFriendId());
+        queryWrapper.eq("user_id", userId);
+        queryWrapper.eq("friend_id", friendId);
         return friendshipMapper.delete(queryWrapper) > 0;
     }
 
@@ -105,10 +106,11 @@ public class FriendshipServiceImpl extends ServiceImpl<FriendshipMapper, Friends
      * @return {@link IPage }<{@link Friendship }>
      */
     @Override
-    public IPage<Friendship> getPageByUserId(int currentPage, int pageSize, Integer userId) {
+    public IPage<Friendship> getPageByUserIdAndStatus(int currentPage, int pageSize, Integer userId, Integer status) {
         IPage<Friendship> page = new Page<>(currentPage, pageSize);
         QueryWrapper<Friendship> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id", userId);
+        queryWrapper.eq("status", status);
         friendshipMapper.selectPage(page, queryWrapper);
         return page;
     }
